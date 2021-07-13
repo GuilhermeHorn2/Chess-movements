@@ -1,0 +1,376 @@
+blank = '-'
+lm = []
+ln = []
+lle = []
+lp = []
+while True:
+
+    m = int(input())
+    if m >= 8 and m <= 26:
+        pos = input()
+        lm.append(m)
+        p, le, n = pos.split(' ')
+        n = int(n)
+    ln.append(n)
+    lle.append(le)
+    lp.append(p)
+
+    l = []
+    board = [
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            []
+
+        ]
+    if m == 0:
+        for z in range(len(ln)-1):
+            m = lm[z]
+            n = ln[z]
+            p = lp[z]
+            le = lle[z]
+            vt = m
+            l.clear()
+            i = 1
+
+            if p == 'Torre':
+
+                k = 1
+                while m > 0:
+                    if m == vt:
+                        message = 'Movimentos para a peca %s a partir da casa %s%s.'
+                        print(message % (p, le, n))
+
+                    # Board
+                    for j in range(1, vt + 1):
+                        board[m].append(blank)
+                    # Board
+
+                    # Peca
+                    if m == n:
+                        board[m][ord(le) - 97] = 'o'
+
+                    # Peca
+
+                    # Movimentos
+                    for k in range(1, vt + 1):
+                        if m == n:
+                            if ord(le) - 97 - k in range(vt):
+                                # board[m][0] = 'x'
+                                board[m][ord(le) - 97 - k] = 'x'
+                            if ord(le) - 97 + k in range(vt):
+                                board[m][ord(le) - 97 + k] = 'x'
+
+                    if m != n:
+                        board[m][ord(le) - 97] = 'x'
+
+                    # Movimentos
+
+                    # Printar
+                    print(m, ' '.join(board[m]))
+                    # Printar
+
+                    l.append((chr(ord('a') + i - 1)))
+                    board[m].clear()####
+                    i += 1
+                    m -= 1
+                print(" ", " ".join(l))
+                print()
+
+            if p == 'Bispo':
+                k = 1
+                while m > 0:
+                    if m == vt:
+                        message = 'Movimentos para a peca %s a partir da casa %s%s.'
+                        print(message % (p, le, n))
+
+                    # Board
+                    for j in range(1, vt + 1):
+                        board[m].append(blank)
+                    # Board
+
+                    # Peca
+                    if m == n:
+                        board[m][ord(le) - 97] = 'o'
+
+                    # Peca
+
+                    # Movimentos
+
+                    for k in range(1, vt + 1):
+                        if m == n + k:
+                            if ord(le) - 97 + k in range(vt):
+                                board[m][ord(le) - 97 + k] = 'x'
+
+                            if ord(le) - 97 - k in range(vt):
+                                board[m][ord(le) - 97 - k] = 'x'
+
+                    for k in range(1, vt + 1):
+                        if m == n - k:
+                            if ord(le) - 97 + k in range(vt):
+                                board[m][ord(le) - 97 + k] = 'x'
+
+                            if ord(le) - 97 - k in range(vt):
+                                board[m][ord(le) - 97 - k] = 'x'
+
+                    # Movimentos
+
+                    # Printar
+                    print(m, ' '.join(board[m]))
+                    # Printar
+
+                    l.append((chr(ord('a') + i - 1)))
+                    board[m].clear()
+                    i += 1
+                    m -= 1
+                print(" ", " ".join(l))
+                print()
+
+
+            if p == 'Dama':
+                k = 1
+                while m > 0:
+                    if m == vt:
+                        message = 'Movimentos para a peca %s a partir da casa %s%s.'
+                        print(message % (p, le, n))
+
+                    # Board
+                    for j in range(1, vt + 1):
+                        board[m].append(blank)
+                    # Board
+
+                    # Peca
+                    if m == n:
+                        board[m][ord(le) - 97] = 'o'
+
+                    # Peca
+
+                    # Movimentos
+
+                    for k in range(1, vt + 1):
+                        if m == n + k:
+                            if ord(le) - 97 + k in range(vt):
+                                board[m][ord(le) - 97 + k] = 'x'
+
+                            if ord(le) - 97 - k in range(vt):
+                                board[m][ord(le) - 97 - k] = 'x'
+
+                    for k in range(1, vt + 1):
+                        if m == n - k:
+                            if ord(le) - 97 + k in range(vt):
+                                board[m][ord(le) - 97 + k] = 'x'
+
+                            if ord(le) - 97 - k in range(vt):
+                                board[m][ord(le) - 97 - k] = 'x'
+
+                    for k in range(1, vt + 1):
+                        if m == n:
+                            if ord(le) - 97 - k in range(vt):
+                                # board[m][0] = 'x'
+                                board[m][ord(le) - 97 - k] = 'x'
+                            if ord(le) - 97 + k in range(vt):
+                                board[m][ord(le) - 97 + k] = 'x'
+
+                    if m != n:
+                        board[m][ord(le) - 97] = 'x'
+
+                    # Movimentos
+
+                    # Printar
+                    print(m, ' '.join(board[m]))
+                    # Printar
+
+                    l.append((chr(ord('a') + i - 1)))
+                    board[m].clear()
+                    i += 1
+                    m -= 1
+                print(" ", " ".join(l))
+                print()
+
+            if p == 'Rei':
+                k = 1
+                while m > 0:
+                    if m == vt:
+                        message = 'Movimentos para a peca %s a partir da casa %s%s.'
+                        print(message % (p, le, n))
+
+                    # Board
+                    for j in range(1, vt + 1):
+                        board[m].append(blank)
+                    # Board
+
+                    # Peca
+                    if m == n:
+                        board[m][ord(le) - 97] = 'o'
+
+                    # Peca
+
+                    # Movimentos
+
+                    if m == n + 1:
+                        if ord(le) - 97 + 1 in range(vt):
+                            board[m][ord(le) - 97 + 1] = 'x'
+                        if ord(le) - 97 - 1 in range(vt):
+                            board[m][ord(le) - 97 - 1] = 'x'
+                        if ord(le) - 97 in range(vt):
+                            board[m][ord(le) - 97] = 'x'
+
+                    if m == n - 1:
+                        if ord(le) - 97 + 1 in range(vt):
+                            board[m][ord(le) - 97 + 1] = 'x'
+                        if ord(le) - 97 - 1 in range(vt):
+                            board[m][ord(le) - 97 - 1] = 'x'
+                        if ord(le) - 97 in range(vt):
+                            board[m][ord(le) - 97] = 'x'
+
+                    if m == n:
+                        if ord(le) - 97 + 1 in range(vt):
+                            board[m][ord(le) - 97 + 1] = 'x'
+                        if ord(le) - 97 - 1 in range(vt):
+                            board[m][ord(le) - 97 - 1] = 'x'
+
+                    # Movimentos
+
+                    # Printar
+                    print(m, ' '.join(board[m]))
+                    # Printar
+
+                    l.append((chr(ord('a') + i - 1)))
+                    board[m].clear()
+                    i += 1
+                    m -= 1
+                print(" ", " ".join(l))
+                print()
+
+            if p == 'Cavalo':
+                k = 1
+                while m > 0:
+                    if m == vt:
+                        message = 'Movimentos para a peca %s a partir da casa %s%s.'
+                        print(message % (p, le, n))
+
+                    # Board
+                    for j in range(1, vt + 1):
+                        board[m].append(blank)
+                    # Board
+
+                    # Peca
+                    if m == n:
+                        board[m][ord(le) - 97] = 'o'
+
+                    # Peca
+
+                    # Movimentos
+
+                    if m == n + 1:
+                        if ord(le) - 97 + 2 in range(vt):
+                            board[m][ord(le) - 97 + 2] = 'x'
+                        if ord(le) - 97 - 2 in range(vt):
+                            board[m][ord(le) - 97 - 2] = 'x'
+
+                    if m == n - 1:
+                        if ord(le) - 97 + 2 in range(vt):
+                            board[m][ord(le) - 97 + 2] = 'x'
+                        if ord(le) - 97 - 2 in range(vt):
+                            board[m][ord(le) - 97 - 2] = 'x'
+
+                    if m == n + 2:
+                        if ord(le) - 97 + 1 in range(vt):
+                            board[m][ord(le) - 97 + 1] = 'x'
+                        if ord(le) - 97 - 1 in range(vt):
+                            board[m][ord(le) - 97 - 1] = 'x'
+
+                    if m == n - 2:
+                        if ord(le) - 97 + 1 in range(vt):
+                            board[m][ord(le) - 97 + 1] = 'x'
+                        if ord(le) - 97 - 1 in range(vt):
+                            board[m][ord(le) - 97 - 1] = 'x'
+
+                    # Movimentos
+
+                    # Printar
+                    print(m, ' '.join(board[m]))
+                    # Printar
+
+                    l.append((chr(ord('a') + i - 1)))
+                    board[m].clear()
+                    i += 1
+                    m -= 1
+                print(" ", " ".join(l))
+                print()
+
+            if p == 'Peao':
+                k = 1
+                while m > 0:
+                    if m == vt:
+                        message = 'Movimentos para a peca %s a partir da casa %s%s.'
+                        print(message % (p, le, n))
+
+                    # Board
+                    for j in range(1, vt + 1):
+                        board[m].append(blank)
+                    # Board
+
+                    # Peca
+                    if m == n:
+                        board[m][ord(le) - 97] = 'o'
+
+                    # Peca
+
+                    # Movimentos
+
+                    if n == 2:
+                        if m == n + 1:
+                            if ord(le) - 97 in range(vt):
+                                board[m][ord(le) - 97] = 'x'
+                        if m == n + 2:
+                            if ord(le) - 97 in range(vt):
+                                board[m][ord(le) - 97] = 'x'
+                    else:
+                        if m == n + 1:
+                            if ord(le) - 97 in range(vt):
+                                board[m][ord(le) - 97] = 'x'
+
+                    # Movimentos
+
+                    # Printar
+                    print(m, ' '.join(board[m]))
+                    # Printar
+
+                    l.append((chr(ord('a') + i - 1)))
+                    board[m].clear()
+                    i += 1
+                    m -= 1
+                print(" ", " ".join(l))
+                print()
+
+        break
+        
